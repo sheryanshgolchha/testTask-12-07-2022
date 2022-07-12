@@ -65,4 +65,52 @@ class Welcome extends CI_Controller {
 		$this->load->view('seven', $count);
 	}
 
+	public function Eight(){
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/convert?to=usd&from=EUR&amount=1",
+		  CURLOPT_HTTPHEADER => array(
+		    "Content-Type: text/plain",
+		    "apikey: trtK2AYucXtlCbpYmhod4k1bDr0IXc8x"
+		  ),
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 0,
+		  CURLOPT_FOLLOWLOCATION => true,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "GET"
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		$data = json_decode($response);
+		echo "1 Euro = ".$data->result.' USD<br>';
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/convert?to=ron&from=EUR&amount=1",
+		  CURLOPT_HTTPHEADER => array(
+		    "Content-Type: text/plain",
+		    "apikey: trtK2AYucXtlCbpYmhod4k1bDr0IXc8x"
+		  ),
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 0,
+		  CURLOPT_FOLLOWLOCATION => true,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "GET"
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		$data = json_decode($response);
+		echo "1 Euro = ".$data->result.' RON';
+	}
+
 }
