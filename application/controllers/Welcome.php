@@ -22,4 +22,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function One(){
+		$this->load->model('WelcomeModel');
+		$count = $this->WelcomeModel->One();
+		$this->load->view('one', $count);
+	}
 }
