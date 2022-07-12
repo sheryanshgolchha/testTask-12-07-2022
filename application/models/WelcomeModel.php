@@ -12,6 +12,12 @@ class WelcomeModel extends CI_Model{
 		return $result;
 	}
 
+	public function Two(){
+		$db = $this->db->query('select count(*) as cnt from users where is_active=1 and is_verified=1 and id in (select user_id from user_product where product_id in (select product_id from products where status=1))');
+		$result = $db->result()[0];
+		return $result;
+	}
+
 }
 
 ?>
