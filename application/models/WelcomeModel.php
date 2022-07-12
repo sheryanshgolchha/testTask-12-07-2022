@@ -18,6 +18,14 @@ class WelcomeModel extends CI_Model{
 		return $result;
 	}
 
+	public function Three(){
+		$this->db->select('count(*) as cnt');
+		$this->db->from('products');
+		$this->db->where('status', 1);
+		$result = $this->db->get()->row();
+		return $result;
+	}
+
 }
 
 ?>
