@@ -26,6 +26,12 @@ class WelcomeModel extends CI_Model{
 		return $result;
 	}
 
+	public function Four(){
+		$db = $this->db->query('select count(*) as cnt from products where id not in (select product_id from user_product) and status=1');
+		$result = $db->result()[0];
+		return $result;
+	}
+
 }
 
 ?>
