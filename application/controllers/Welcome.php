@@ -53,4 +53,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('five', $count);
 	}
 
+	public function Six(){
+		$this->load->model('WelcomeModel');
+		$count = $this->WelcomeModel->Six();
+		$this->load->view('six', $count);
+	}
+
 }

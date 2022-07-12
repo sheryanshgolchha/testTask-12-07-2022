@@ -38,6 +38,12 @@ class WelcomeModel extends CI_Model{
 		return $result;
 	}
 
+	public function Six(){
+		$db = $this->db->query('select sum(quantity*price) as cnt from user_product where product_id in (select id from products where status=1)');
+		$result = $db->result()[0];
+		return $result;
+	}
+
 }
 
 ?>
