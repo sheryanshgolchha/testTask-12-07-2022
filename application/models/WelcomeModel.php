@@ -44,6 +44,12 @@ class WelcomeModel extends CI_Model{
 		return $result;
 	}
 
+	public function Seven(){
+		$db = $this->db->query('select sum(quantity*price) as total,users.name from user_product, users where product_id in (select id from products where status=1) and users.id=user_product.user_id group by user_id');
+		$result = $db->result();
+		return $result;
+	}
+
 }
 
 ?>
